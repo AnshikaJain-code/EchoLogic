@@ -1,0 +1,5 @@
+import {useState} from 'react';import {Link} from 'react-router-dom';import {issues} from '../data/troubleshooting';
+export default function Troubleshooting(){const [q,setQ]=useState('');const r=issues.filter(i=>JSON.stringify(i).toLowerCase().includes(q.toLowerCase()));
+return <div><h1 className="mb-4">Wi-Fi Troubleshooting</h1><input className="inp mb-4" placeholder="Describe your device issue..." value={q} onChange={e=>setQ(e.target.value)}/>
+<div className="grid gap-3">{r.map(([t,c,s])=><details key={t} className="card"><summary className="cursor-pointer font-bold">{t}</summary><p className="mt-2 font-semibold">Possible causes</p><ul className="list-disc pl-5 text-mu">{c.map(x=><li key={x}>{x}</li>)}</ul><p className="mt-2 font-semibold">Try this</p><ol className="list-decimal pl-5 text-mu">{s.map(x=><li key={x}>{x}</li>)}</ol><Link to="/setup" className="text-ac font-semibold text-sm">Setup documentation</Link></details>)}{!r.length&&<p>No matching articles.</p>}</div>
+<p className="mt-4 text-sm">This is a static knowledge base; it cannot diagnose hardware.</p></div>}

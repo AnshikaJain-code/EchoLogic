@@ -1,0 +1,3 @@
+import {steps} from '../data/documentation';import Cta from '../components/Cta';import {XIAOZHI_AGENTS_URL as A,PROJECT_TUTORIAL_URL as T} from '../config/links';
+export default function SetupGuide(){return <div><h1>Setup Guide</h1><p className="mb-4">Technical steps follow the official tutorial; no commands or wiring are invented here.</p><Cta to={T}>Open Official Setup Tutorial</Cta>
+<div className="grid sm:grid-cols-2 gap-4 mt-8">{steps.map(([t,d],i)=><div key={t} className="card"><span className="chip">Step {i+1}</span><h3 className="mt-3">{t}</h3><p>{d}</p>{i===4||i===5?<div className="mt-3"><Cta to={A} cls="btn">XiaoZhi Console</Cta></div>:null}{i===2?<div className="mt-3"><Cta to={T} cls="btn">Firmware Guide</Cta></div>:null}</div>)}</div></div>}

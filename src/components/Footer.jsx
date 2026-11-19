@@ -1,0 +1,1 @@
+export default function Footer(){return <footer className="mt-16 text-sm"><p>XiaoZhi AI – ESP32 Voice Assistant. Built by Anshika Jain and Yashika. Frontend only; no backend or device connection.</p></footer>}

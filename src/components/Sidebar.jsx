@@ -1,0 +1,7 @@
+import {useState} from 'react';import {NavLink} from 'react-router-dom';import {Menu,X} from 'lucide-react';
+export const nav=[['/','Overview'],['/workspace','AI Workspace'],['/hardware','Device & Hardware'],['/docs','Documentation'],['/setup','Setup Guide'],['/wifi','Wi-Fi Troubleshooting'],['/progress','Testing & Progress'],['/notes','My Notes'],['/about','About Us']];
+export default function Sidebar(){const [o,setO]=useState(false);return <>
+<div className="md:hidden sticky top-0 z-30 flex justify-between items-center px-4 py-3 border-b border-line backdrop-blur-md bg-glass"><b>XiaoZhi AI</b><button aria-label="Menu" onClick={()=>setO(!o)}>{o?<X/>:<Menu/>}</button></div>
+<aside className={'fixed inset-y-0 left-0 w-60 z-20 p-4 pt-20 md:pt-6 flex flex-col gap-1 border-r border-line backdrop-blur-xl bg-glass transition-transform '+(o?'':'-translate-x-full md:translate-x-0')}>
+<div className="hidden md:flex items-center gap-2 font-extrabold mb-6 px-2"><span className="w-8 h-8 rounded-xl bg-ac text-white grid place-items-center">智</span>XiaoZhi AI</div>
+<p className="px-4 text-xs text-mu mb-1">Menu</p>{nav.map(([to,l])=><NavLink key={to} to={to} end={to==='/'} onClick={()=>setO(false)} className={({isActive})=>'px-4 py-2.5 rounded-2xl text-sm font-semibold transition '+(isActive?'bg-gradient-to-r from-[#a99ae6] to-[#f2a36b] text-white shadow-md':'text-mu hover:bg-glass')}>{l}</NavLink>)}</aside></>}

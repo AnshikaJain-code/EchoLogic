@@ -1,0 +1,2 @@
+import {useState} from 'react';import {ArrowRight} from 'lucide-react';import {stages} from '../data/hardware';
+export default function WorkflowDiagram(){const [i,setI]=useState(0);return <div><div className="flex flex-wrap gap-2 items-center">{stages.map((s,k)=><span key={k} className="flex items-center gap-2"><button onClick={()=>setI(k)} className={'btn '+(i===k?'btn-p':'')}>{s[0]}</button>{k<5&&<ArrowRight size={16}/>}</span>)}</div><p className="mt-3">{stages[i][1]}</p></div>}
